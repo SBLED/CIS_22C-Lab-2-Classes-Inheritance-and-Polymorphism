@@ -22,14 +22,15 @@ public:
 		coin = (inCurr - currency) * 100;
 	}
 
-	Currency(Currency) {
-
+	Currency(Currency &t) {
+		currency = t.currency;
+		coin = t.coin;
 	}
 	//Destructor Declaration; not needed, abstract class
 
 	//Setters & Getters (make virtual)
-	virtual void add(int);
-	virtual void subtract(int);
+	virtual void add(Currency&); //changed to Currency from int
+	virtual void subtract(Currency&);//changed to Currency from int
 	virtual void isEqual(Currency, Currency);
 	virtual void isGreater(Currency, Currency);
 	virtual void print();

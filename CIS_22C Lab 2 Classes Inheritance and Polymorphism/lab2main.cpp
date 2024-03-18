@@ -1,5 +1,5 @@
 /* CIS-22C
-*  Lab 2
+*  Lab 2 - Classes, Inheritance, and Polymorphism
 *  Spencer Bledsoe
 *  Program Description: To check a user-inputted array to determine whether or not it consists entirely of prime numbers,
 *						using both recursive and iterative methods.
@@ -16,6 +16,7 @@
 *	Pause for user input.
 *	Return 0 and exit program.
 * */
+
 #include "Currency.h"
 #include "Dollar.h"
 #include "Pound.h"
