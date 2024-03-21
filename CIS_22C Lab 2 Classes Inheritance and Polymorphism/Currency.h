@@ -4,11 +4,13 @@
 */
 
 #pragma once
+#include <string>
 
 class Currency {
 private:
 	int currency;
 	int coin;
+
 
 public:
 	//Constructor Declarations (Default, All Param, Copy), no constructors/destructors needed, abstract class
@@ -26,14 +28,23 @@ public:
 		currency = t.currency;
 		coin = t.coin;
 	}
-	//Destructor Declaration; not needed, abstract class
+
+	//Overloading equality operator
+	friend bool operator == (Currency x, Currency y);
 
 	//Setters & Getters (make virtual)
-	virtual void add(Currency&); //changed to Currency from int
-	virtual void subtract(Currency&);//changed to Currency from int
+	virtual int getCurr();
+	virtual int getCoin();
+
+	virtual void add(Currency); //changed to Currency from int
+	virtual void subtract(Currency);//changed to Currency from int
 	virtual void isEqual(Currency, Currency);
 	virtual void isGreater(Currency, Currency);
 	virtual void print();
 
 };
+
+bool operator == (Currency x, Currency y) {
+	return (x.currency == y.currency) && (x.coin == y.coin);
+}
 
