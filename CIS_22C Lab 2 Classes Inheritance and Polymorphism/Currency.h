@@ -29,8 +29,7 @@ public:
 		coin = t.coin;
 	}
 
-	//Overloading equality operator.
-	friend bool operator == (Currency x, Currency y);
+
 
 	//Setters & Getters (make virtual)
 	virtual int getCurr();
@@ -44,7 +43,5 @@ public:
 
 };
 
-bool operator == (Currency x, Currency y) {
-	return (x.currency == y.currency) && (x.coin == y.coin);
-}
+
 
