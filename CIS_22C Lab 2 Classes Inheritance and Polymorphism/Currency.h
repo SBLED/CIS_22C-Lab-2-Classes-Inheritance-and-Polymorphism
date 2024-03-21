@@ -29,7 +29,7 @@ public:
 		coin = t.coin;
 	}
 
-	//Overloading equality operator
+	//Overloading equality operator.
 	friend bool operator == (Currency x, Currency y);
 
 	//Setters & Getters (make virtual)
