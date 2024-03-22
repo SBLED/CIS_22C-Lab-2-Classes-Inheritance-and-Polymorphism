@@ -6,14 +6,14 @@
 #pragma once
 #include "Currency.h"
 #include <string>
+#include <iomanip>
 
 class Dollar : public Currency {
 private:
+
 	int dollars;
 	int cents;
 	std::string currType = "Dollar";
-
-	
 
 public:
 	//Constructor Declarations (Default, All Param, Copy)
@@ -25,34 +25,23 @@ public:
 		std::cout << "Dollar destructor executed" << std::endl;
 	}
 
-	//Overloading equality operator.
-	friend bool operator == (Dollar x, Dollar y);
-	friend bool operator > (Dollar x, Dollar y);
-	friend bool operator < (Dollar x, Dollar y);
-
 	//Setters & Getters (make "override")
 	int getCurr() override { return dollars; }
 	int getCoin() override { return cents; }
+	string getType() override { return currType; }
 
-	void add(Currency newCurr) override { dollars = dollars + newCurr.getCurr(); cents = cents + newCurr.getCoin(); }
-	void subtract(Currency newCurr) override { dollars = dollars - newCurr.getCurr(); cents = cents - newCurr.getCoin(); }
+	void add(Currency newCurr) override { 
+		dollars = dollars + newCurr.getCurr(); cents = cents + newCurr.getCoin();
+		return;
+	}
+	void subtract(Currency newCurr) override { 
+		dollars = dollars - newCurr.getCurr(); cents = cents - newCurr.getCoin();
+		return;
+	}
 
 	//Check these two and make sure they only compare objects of same currency: "Dollar", add a check for the string currType for all functions
-	void isEqual(Currency, Currency) override {}
-	void isGreater(Currency, Currency) override {}
-	void print() override { cout << dollars << "." << cents << " " << currType << endl; }
+	//isEqual(Currency y) override { return *this == y; }
+	//void isGreater(Currency y) override { return this > y; }
+	void print() override { cout << dollars << "." << setprecision(2) << cents << " " << currType << endl; return; }
 
 };
-
-//May need to put this in base class?
-bool operator == (Dollar x, Dollar y) {
-	return (x.getCurr() == y.getCurr()) && (x.getCoin() == y.getCoin());
-}
-
-bool operator > (Dollar x, Dollar y) {
-	return (x.getCurr() > y.getCurr()) && (x.getCoin() > y.getCoin());
-}
-
-bool operator < (Dollar x, Dollar y) {
-	return (x.getCurr() < y.getCurr()) && (x.getCoin() < y.getCoin());
-}

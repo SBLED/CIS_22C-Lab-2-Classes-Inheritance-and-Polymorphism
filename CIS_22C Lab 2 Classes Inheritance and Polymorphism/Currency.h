@@ -11,7 +11,6 @@ private:
 	int currency;
 	int coin;
 
-
 public:
 	//Constructor Declarations (Default, All Param, Copy), no constructors/destructors needed, abstract class
 	Currency() {
@@ -29,7 +28,10 @@ public:
 		coin = t.coin;
 	}
 
-
+	virtual std::string getType();
+	bool operator == (Currency y);
+	bool operator > (Currency y);
+	bool operator < (Currency y);
 
 	//Setters & Getters (make virtual)
 	virtual int getCurr();
@@ -37,11 +39,50 @@ public:
 
 	virtual void add(Currency); //changed to Currency from int
 	virtual void subtract(Currency);//changed to Currency from int
-	virtual void isEqual(Currency, Currency);
-	virtual void isGreater(Currency, Currency);
+	bool isEqual(Currency y) { return *this == y; }
+	virtual void isGreater(Currency);
 	virtual void print();
 
 };
 
+bool Currency::operator == (Currency y) {
+	try {
+		if (this->getType() == y.getType()) {
+			return (this->getCurr() == y.getCurr()) && (this->getCoin() == y.getCoin());
+		}
+		else {
+			throw ('==');
+		}
+	}
+	catch (char z) {
+		cout << "Invalid comparison: Currency Type Mismatch for operator " << z << endl;
+	}
+}
 
+bool Currency::operator > (Currency y) {
+	try {
+		if (this->getType() == y.getType()) {
+			return (this->getCurr() > y.getCurr()) && (this->getCoin() > y.getCoin());
+		}
+		else {
+			throw ('>');
+		}
+	}
+	catch (char z) {
+		cout << "Invalid comparison: Currency Type Mismatch for operator " << z << endl;
+	}
+}
 
+bool Currency::operator < (Currency y) {
+	try {
+		if (this->getType() == y.getType()) {
+			return (this->getCurr() < y.getCurr()) && (this->getCoin() < y.getCoin());
+		}
+		else {
+			throw ('<');
+		}
+	}
+	catch (char z) {
+		cout << "Invalid comparison: Currency Type Mismatch for operator " << z << endl;
+	}
+}
