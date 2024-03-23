@@ -8,16 +8,17 @@
 #include <string>
 
 class Pound : public Currency {
+private:
+	std::string currType = "Pound";
+
 public:
 	//Constructor Declarations (Default, All Param, Copy)
+	using Currency::Currency;
 
-	//Destructor Declaration
-
-	//Setters & Getters
-
-private:
-	int pounds;
-	int pence;
+	//Setters & Getters (make "override")
+	int getCurr() override { return currency; }
+	int getCoin() override { return coin; }
+	std::string getType() override { return currType; }
 
 };
 
