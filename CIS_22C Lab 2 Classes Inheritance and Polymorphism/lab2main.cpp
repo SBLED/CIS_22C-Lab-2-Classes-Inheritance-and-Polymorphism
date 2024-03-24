@@ -4,14 +4,13 @@
 *  Program Description: To manipulate currency objects of types Dollar and Pound, adding and subtracting amounts based on user input.
 *
 *  Pseudocode:
-*	Take user input for the array elements.
-*	Open iterative function to loop through and check for non-prime numbers.
-*		Return true if all are prime, false if not.
-*	Output results to user.
-*	Open recursive function to check for non-prime numbers through the use of a helper function.
-*		Recursively call itself to check each possible divisor for each element in the array.
-*		Exit all function calls and return true if all are prime, false if not.
-*	Output results to user.
+*	Create array of two Currency objects, 1 Pound object, 1 Dollar object.
+*	Take user input as string and assign to variables.
+*	Follow decision tree to correct operations on correct object. Throw exceptions if invalid input.
+*	Create input object of correct type in order to act on corresponding array member.
+*	Delete input object and clear user input string. Loop back to input while user input != "q"
+*	Exit upon user input of "q"
+*	Delete all objects.
 *	Pause for user input.
 *	Return 0 and exit program.
 * */
@@ -106,6 +105,9 @@ int main() {
 }
 
 void print(Currency** currArray) {
+	/*Pre: currArray != NULL
+	Post: print currArray contents to console
+	*/
 	currArray[0]->print();
 	cout << " ";
 	currArray[1]->print();

@@ -15,7 +15,10 @@ public:
 	//Constructor Declarations (Default, All Param, Copy)
 	using Currency::Currency;
 
-	//Setters & Getters (make "override")
+	//Getters (make "override")
+	/*Pre: this.currType == Dollar
+	Post: Returns corresponding member variable
+	*/
 	int getCurr() const override { return currency; }
 	int getCoin() const override { return coin; }
 	std::string getType() const override { return currType; }

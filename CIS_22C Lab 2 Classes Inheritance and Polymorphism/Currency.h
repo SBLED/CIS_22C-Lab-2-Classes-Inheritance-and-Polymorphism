@@ -34,11 +34,18 @@ public:
 	bool operator > (const Currency& y) const;
 	bool operator < (const Currency& y) const;
 
-	//Setters & Getters (make virtual)
+	//Getters (make virtual)
+	/*Pre: Object type == derived class
+	Post: returns corresponding member variable value from derived class after override.
+	*/
 	virtual int getCurr() const = 0;
 	virtual int getCoin() const = 0;
 	virtual std::string getType() const = 0;
 
+	//Setters
+	/*Pre: this.currType == newCurr.currType && validated input
+	Post: this.currency && this.coin +- newCurr.currency && newCurr.coin
+	*/
 	void add(Currency& newCurr) {
 		try {
 			if (this->getType() == newCurr.getType()) {
@@ -73,8 +80,14 @@ public:
 
 		return;
 	}
-	bool isEqual(Currency* y) const { return (this == y); }
+	/*Pre: y.currType == this.currType
+	* Post: returns comparison output
+	*/
+	bool isEqual(Currency* y) const { return (this == y); } //These two functions are having issues. Will continue troubleshooting.
 	bool isGreater(Currency* y) const { return (this > y); } //returns true if this > input obj
+	/*Pre: None
+	Post: Prints this.currency && this.coin to console.
+	*/
 	void print() {
 		std::cout << getCurr() << "." << std::setw(2) << std::setfill('0') << std::right << getCoin() << " " << getType();
 		return;
@@ -83,8 +96,10 @@ public:
 };
 
 bool Currency::operator==(const Currency& y) const {
+	/*Pre: this.currType == y.currType
+	Post: returns comparison
+	*/
 	try {
-		//std::cout << "this->getType(): " << this->getType() << ", y->getType(): " << y->getType() << std::endl;
 		if (getType() == y.getType()) {
 			if ((this->getCurr() == y.getCurr()) && (this->getCoin() == y.getCoin())) {
 				return true;
@@ -105,6 +120,9 @@ bool Currency::operator==(const Currency& y) const {
 }
 
 bool Currency::operator > (const Currency& y) const {
+	/*Pre: this.currType == y.currType
+	Post: returns comparison output
+	*/
 	try {
 		if (this->getType() == y.getType()) {
 			return (this->getCurr() > y.getCurr()) && (this->getCoin() > y.getCoin());
@@ -120,6 +138,9 @@ bool Currency::operator > (const Currency& y) const {
 }
 
 bool Currency::operator < (const Currency& y) const {
+	/*Pre: this.currType == y.currType
+	Post: returns comparison output
+	*/
 	try {
 		if (this->getType() == y.getType()) {
 			return (this->getCurr() < y.getCurr()) && (this->getCoin() < y.getCoin());
