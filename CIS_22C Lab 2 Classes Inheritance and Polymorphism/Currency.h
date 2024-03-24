@@ -30,14 +30,14 @@ public:
 		coin = t.coin;
 	}
 
-	bool operator == (Currency* y);
-	bool operator > (Currency* y);
-	bool operator < (Currency* y);
+	bool operator == (const Currency& y) const;
+	bool operator > (const Currency& y) const;
+	bool operator < (const Currency& y) const;
 
 	//Setters & Getters (make virtual)
-	virtual int getCurr() = 0;
-	virtual int getCoin() = 0;
-	virtual std::string getType() = 0;
+	virtual int getCurr() const = 0;
+	virtual int getCoin() const = 0;
+	virtual std::string getType() const = 0;
 
 	void add(Currency& newCurr) {
 		try {
@@ -73,8 +73,8 @@ public:
 
 		return;
 	}
-	bool isEqual(Currency* y) { return this == y; }
-	bool isGreater(Currency* y) { return (this > y); } //returns true if this > input obj
+	bool isEqual(Currency* y) const { return (this == y); }
+	bool isGreater(Currency* y) const { return (this > y); } //returns true if this > input obj
 	void print() {
 		std::cout << getCurr() << "." << std::setw(2) << std::setfill('0') << std::right << getCoin() << " " << getType();
 		return;
@@ -82,13 +82,11 @@ public:
 
 };
 
-bool Currency::operator == (Currency* y) {
+bool Currency::operator==(const Currency& y) const {
 	try {
-		std::cout << "this->getType(): " << this->getType() << ", y->getType(): " << y->getType() << std::endl;
-		if (this->getType() == y->getType()) {
-			if ((this->getCurr() == y->getCurr()) && (this->getCoin() == y->getCoin())) {
-				std::cout << "this-> getCurr(): " << this->getCurr() << ", y->getCurr(): " << y->getCurr()
-					<< " && this->getCoin(): " << this->getCoin() << ", y->getCoin(): " << y->getCoin() << std::endl;
+		//std::cout << "this->getType(): " << this->getType() << ", y->getType(): " << y->getType() << std::endl;
+		if (getType() == y.getType()) {
+			if ((this->getCurr() == y.getCurr()) && (this->getCoin() == y.getCoin())) {
 				return true;
 			}
 			else {
@@ -103,13 +101,13 @@ bool Currency::operator == (Currency* y) {
 		std::cout << "Invalid comparison: Currency Type Mismatch for operator " << z << z << std::endl;
 		return false;
 	}
-	
+
 }
 
-bool Currency::operator > (Currency* y) {
+bool Currency::operator > (const Currency& y) const {
 	try {
-		if (this->getType() == y->getType()) {
-			return (this->getCurr() > y->getCurr()) && (this->getCoin() > y->getCoin());
+		if (this->getType() == y.getType()) {
+			return (this->getCurr() > y.getCurr()) && (this->getCoin() > y.getCoin());
 		}
 		else {
 			throw char('>');
@@ -121,10 +119,10 @@ bool Currency::operator > (Currency* y) {
 	}
 }
 
-bool Currency::operator < (Currency* y) {
+bool Currency::operator < (const Currency& y) const {
 	try {
-		if (this->getType() == y->getType()) {
-			return (this->getCurr() < y->getCurr()) && (this->getCoin() < y->getCoin());
+		if (this->getType() == y.getType()) {
+			return (this->getCurr() < y.getCurr()) && (this->getCoin() < y.getCoin());
 		}
 		else {
 			throw char('<');

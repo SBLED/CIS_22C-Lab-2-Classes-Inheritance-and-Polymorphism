@@ -77,7 +77,7 @@ int main() {
 						}
 					}
 					else if (opType == "s") {
-						if (actType == "dollar") {
+						if (actType == "dollar" && (currArray[1]->getCurr() >= inputDollar->getCurr()) && (currArray[1]->getCoin() >= inputDollar->getCoin())) {
 							currArray[1]->subtract(*inputDollar);
 						}
 						else {
