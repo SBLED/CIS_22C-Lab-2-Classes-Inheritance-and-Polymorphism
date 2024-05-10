@@ -14,7 +14,7 @@ protected:
 	int coin;
 
 public:
-	//Constructor Declarations (Default, All Param, Copy), no constructors/destructors needed, abstract class
+	//Constructor Declarations (Default, Double, Copy), no constructors/destructors needed, abstract class
 	Currency() {
 		currency = 0;
 		coin = 0;
@@ -97,7 +97,7 @@ public:
 
 bool Currency::operator==(const Currency& y) const {
 	/*Pre: this.currType == y.currType
-	Post: returns comparison
+	Post: returns comparison output
 	*/
 	try {
 		if (getType() == y.getType()) {
@@ -125,7 +125,7 @@ bool Currency::operator > (const Currency& y) const {
 	*/
 	try {
 		if (this->getType() == y.getType()) {
-			return (this->getCurr() > y.getCurr()) && (this->getCoin() > y.getCoin());
+			return ((this->getCurr() > y.getCurr()) && (this->getCoin() > y.getCoin()));
 		}
 		else {
 			throw char('>');
@@ -143,7 +143,7 @@ bool Currency::operator < (const Currency& y) const {
 	*/
 	try {
 		if (this->getType() == y.getType()) {
-			return (this->getCurr() < y.getCurr()) && (this->getCoin() < y.getCoin());
+			return ((this->getCurr() < y.getCurr()) && (this->getCoin() < y.getCoin()));
 		}
 		else {
 			throw char('<');

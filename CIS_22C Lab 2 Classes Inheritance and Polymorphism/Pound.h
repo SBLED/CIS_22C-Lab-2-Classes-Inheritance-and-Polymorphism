@@ -12,7 +12,7 @@ private:
 	std::string currType = "Pound";
 
 public:
-	//Constructor Declarations (Default, All Param, Copy)
+	//Constructor Declarations (Default, Double, Copy)
 	using Currency::Currency;
 
 	//Getters (make "override")
