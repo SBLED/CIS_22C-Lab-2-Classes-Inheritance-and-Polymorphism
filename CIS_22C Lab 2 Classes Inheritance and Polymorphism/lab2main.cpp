@@ -22,7 +22,7 @@
 #include <sstream>
 using namespace std;
 
-void print(Currency*[]); //Check if pointer is correct
+void print(Currency*[]);
 
 int main() {
 	string userInput;
